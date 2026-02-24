@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@layer base {
+    :root {
+        --crt-red: rgb(218, 49, 49);
+        --crt-green: rgb(112, 159, 115);
+        --crt-blue: rgb(40, 129, 206);
+    }
+
+    html {
+        font-size: 1.5rem;
+        font-family: "Courier New", monospace;
+        min-height: 100%;
+    }
+
+    main {
+        height: 100vh;
+        height: 100dvh;
+        color: rgba(255, 255, 255, 0.75);
+        user-select: none;
+        touch-action: none;
+        overflow: hidden;
+    }
+}
+
+@layer components {
+    .crt {
+        position: relative;
+        text-shadow: 0 0 0.1em rgba(0, 0, 0, 0.2);
+    }
+
+    .crt::before,
+    .crt::after {
+        content: "";
+        pointer-events: none;
+        mix-blend-mode: multiply;
+        position: absolute;
+        inset: 0;
+        z-index: 50;
+        opacity: 0.15;
+    }
+
+    .crt::before {
+        background: repeating-linear-gradient(var(--crt-red) 0px,
+                var(--crt-green) 2px,
+                var(--crt-blue) 4px);
+    }
+
+    .crt::after {
+        background: repeating-linear-gradient(90deg,
+                var(--crt-red) 1px,
+                var(--crt-green) 2px,
+                var(--crt-blue) 3px);
+    }
+
+    .glow-white {
+        color: black;
+        text-shadow:
+            1px 0px 1px rgba(255, 0, 255, 0.7),
+            -1px 0px 1px rgba(0, 255, 255, 0.7);
+    }
+}
+
+.overflow-y-auto::-webkit-scrollbar {
+    width: 8px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+    background: #d9d8d8;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+    background: black;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+    background: #333;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
